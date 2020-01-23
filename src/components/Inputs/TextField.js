@@ -13,6 +13,22 @@ import {
   WHITE
 } from "../../styles/colors";
 
+const webStyles = {
+  inputRoot: {
+    height: "36px",
+    borderRadius: "3px"
+  },
+  labelRoot: {
+    fontWeight: "bold"
+  }
+};
+
+const addinStyles = {
+  inputRoot: {
+    height: "32px"
+  }
+}
+
 const styles = theme => {
   return {
     formControlRoot: {
@@ -61,7 +77,8 @@ const styles = theme => {
       },
       "&$inputFocused": {
         border: `1px solid ${BLUE_50}`
-      }
+      },
+      ...(theme.venaTheme === "addin" ? addinStyles.inputRoot : webStyles.inputRoot)
     },
     inputDisabled: {},
     inputError: {},
@@ -82,7 +99,8 @@ const styles = theme => {
       },
       "&$labelFocused": {
         color: BLACK
-      }
+      },
+      ...(theme.venaTheme === "addin" ? addinStyles.labelRoot : webStyles.labelRoot)
     },
     labelDisabled: {},
     labelError: {},
