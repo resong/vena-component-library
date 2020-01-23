@@ -5,18 +5,35 @@ import MuiTextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import {
   BLUE_50,
+  BLUE_70,
   GRAY_30,
   GRAY_50,
   GRAY_90,
   RED_50,
+  RED_70,
   BLACK,
   WHITE
 } from "../../styles/colors";
 
 const webStyles = {
+  formControlRoot: {
+    width: "340px"
+  },
+  helperTextRoot: {
+    "&$helperTextError": {
+      color: RED_70
+    }
+  },
   inputRoot: {
     height: "36px",
-    borderRadius: "3px"
+    borderRadius: "3px",
+
+    "&$inputError": {
+      border: `1px solid ${RED_70}`
+    },
+    "&$inputFocused": {
+      border: `1px solid ${BLUE_70}`
+    },
   },
   labelRoot: {
     fontWeight: "bold"
@@ -24,19 +41,39 @@ const webStyles = {
 };
 
 const addinStyles = {
+  formControlRoot: {
+    width: "320px"
+  },
+  helperTextRoot: {
+    "&$helperTextError": {
+      color: RED_50
+    }
+  },
   inputRoot: {
-    height: "32px"
+    height: "32px",
+
+    "&:hover": {
+      border: `1px solid ${GRAY_90}`
+    },
+    "&$inputError": {
+      border: `1px solid ${RED_50}`
+    },
+    "&$inputFocused": {
+      border: `1px solid ${BLUE_50}`
+    },
   }
 }
 
 const styles = theme => {
+  const projectTheme = theme.venaTheme === "addin" ? addinStyles : webStyles;
+  
   return {
     formControlRoot: {
-      width: "320px",
-
       "&$formControlFullWidth": {
         width: "100%"
-      }
+      },
+
+      ...projectTheme.formControlRoot
     },
     formControlFullWidth: {},
     helperTextRoot: {
@@ -44,9 +81,7 @@ const styles = theme => {
       fontSize: "12px",
       fontStyle: "italic",
 
-      "&$helperTextError": {
-        color: RED_50
-      }
+      ...projectTheme.helperTextRoot
     },
     helperTextError: {},
     inputInput: {
@@ -58,27 +93,18 @@ const styles = theme => {
       boxSizing: "border-box",
       color: BLACK,
       fontSize: "14px",
-      height: "32px",
       paddingLeft: "8px",
       paddingRight: "8px",
 
       "$labelRoot + &": {
         marginTop: "8px"
       },
-      "&:hover": {
-        border: `1px solid ${GRAY_90}`
-      },
       "&$inputDisabled": {
         border: `1px solid ${GRAY_50}`,
         backgroundColor: GRAY_30
       },
-      "&$inputError": {
-        border: `1px solid ${RED_50}`
-      },
-      "&$inputFocused": {
-        border: `1px solid ${BLUE_50}`
-      },
-      ...(theme.venaTheme === "addin" ? addinStyles.inputRoot : webStyles.inputRoot)
+
+      ...projectTheme.inputRoot
     },
     inputDisabled: {},
     inputError: {},
@@ -100,7 +126,8 @@ const styles = theme => {
       "&$labelFocused": {
         color: BLACK
       },
-      ...(theme.venaTheme === "addin" ? addinStyles.labelRoot : webStyles.labelRoot)
+
+      ...projectTheme.labelRoot
     },
     labelDisabled: {},
     labelError: {},
