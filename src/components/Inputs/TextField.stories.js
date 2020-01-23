@@ -183,6 +183,13 @@ class TextFieldDemo extends React.Component {
             />
 
             <TextField
+              label="Success"
+              className={classes.textField}
+              helperText="Some important text"
+              success={true}
+            />
+
+            <TextField
               label="Number"
               className={classes.textField}
               type="number"

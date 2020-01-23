@@ -12,7 +12,8 @@ import {
   RED_50,
   RED_70,
   BLACK,
-  WHITE
+  WHITE,
+  GREEN_70
 } from "../../styles/colors";
 
 const webStyles = {
@@ -36,6 +37,9 @@ const webStyles = {
     "&$inputFocused": {
       border: `1px solid ${BLUE_70}`
     },
+  },
+  inputSuccess: {
+    border: `1px solid ${GREEN_70}`,
   },
   labelRoot: {
     fontWeight: "bold"
@@ -110,6 +114,7 @@ const styles = theme => {
     },
     inputDisabled: {},
     inputError: {},
+    inputSuccess: { ...projectTheme.inputSuccess },
     inputFormControl: {},
     inputFocused: {},
     labelRoot: {
@@ -142,6 +147,7 @@ function TextField({
   disabled,
   endAdornment,
   error,
+  success,
   fullWidth,
   helperText,
   id,
@@ -177,7 +183,7 @@ function TextField({
       }}
       InputProps={{
         classes: {
-          root: classes.inputRoot,
+          root: success ? `${classes.inputSuccess} ${classes.inputRoot}` : classes.inputRoot,
           input: classes.inputInput,
           disabled: classes.inputDisabled,
           error: classes.inputError,
