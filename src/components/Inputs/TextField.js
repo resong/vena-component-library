@@ -20,6 +20,8 @@ const webStyles = {
     width: "340px"
   },
   helperTextRoot: {
+    color: BLACK,
+    
     "&$helperTextError": {
       color: RED_70
     }
