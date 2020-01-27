@@ -3,11 +3,13 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import MuiTextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import { CheckCircleIcon } from '@material-ui/icons/CheckCircle';
 import {
   BLUE_50,
   BLUE_70,
   GRAY_30,
   GRAY_50,
+  GRAY_70,
   GRAY_90,
   RED_50,
   RED_70,
@@ -31,6 +33,9 @@ const webStyles = {
     height: "36px",
     borderRadius: "3px",
 
+    "&:hover": {
+      border: `1px solid ${GRAY_70}`
+    },
     "&$inputError": {
       border: `1px solid ${RED_70}`
     },
@@ -38,8 +43,32 @@ const webStyles = {
       border: `1px solid ${BLUE_70}`
     },
   },
+  inputDisabled: {
+    "&:hover": {
+      cursor: "not-allowed"
+    }
+  },
   inputSuccess: {
     border: `1px solid ${GREEN_70}`,
+
+    "&:hover": {
+      border: `1px solid ${GREEN_70}`
+    }
+  },
+  inputAdornment: {
+    "& p": {
+      color: BLACK
+    }
+  },
+  inputErrorAdornment: {
+    "& p": {
+      color: RED_70
+    }
+  }, 
+  inputSuccessAdornment: {
+    "& p": {
+      color: GREEN_70
+    }
   },
   labelRoot: {
     fontWeight: "bold"
@@ -112,11 +141,14 @@ const styles = theme => {
 
       ...projectTheme.inputRoot
     },
-    inputDisabled: {},
+    inputDisabled: { ...projectTheme.inputDisabled },
     inputError: {},
     inputSuccess: { ...projectTheme.inputSuccess },
     inputFormControl: {},
     inputFocused: {},
+    inputAdornment: { ...projectTheme.inputAdornment },
+    inputErrorAdornment: { ...projectTheme.inputErrorAdornment },
+    inputSuccessAdornment: { ...projectTheme.inputSuccessAdornment },
     labelRoot: {
       color: BLACK,
       fontSize: "14px",
@@ -147,7 +179,7 @@ function TextField({
   disabled,
   endAdornment,
   error,
-  success,
+  success,    
   fullWidth,
   helperText,
   id,
@@ -192,8 +224,10 @@ function TextField({
         },
         disableUnderline: true,
         endAdornment: endAdornment ? (
-          <InputAdornment position="end">{endAdornment}</InputAdornment>
+          <InputAdornment position="end" className={classes.inputAdornment}>{endAdornment}</InputAdornment>
         ) : null,
+        successAdornment: success ? (<InputAdornment position="end" className={classes.inputSuccessAdornment}><CheckCircleIcon /></InputAdornment>) : null,
+        errorAdornment: error ? (<InputAdornment position="end" className={classes.inputErrorAdornment}></InputAdornment>) : null,
         readOnly: readOnly
       }}
       classes={{
