@@ -17,6 +17,10 @@ import {
   GREEN_70
 } from "../../styles/colors";
 
+// TODO for web-client as per the mockup (https://projects.invisionapp.com/share/7VVOHYTJD6P#/screens/389652810_Fields): 
+// 1. Add error & success state icons
+// 2. Add right-side link
+
 const webStyles = {
   formControlRoot: {
     width: "340px"
@@ -52,6 +56,9 @@ const webStyles = {
 
     "&:hover": {
       border: `1px solid ${GREEN_70}`
+    },
+    "&$inputFocused": {
+      border: `1px solid ${BLUE_70}`
     }
   },
   inputAdornment: {
