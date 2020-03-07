@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import MuiTextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import { CheckCircleIcon } from '@material-ui/icons/CheckCircle';
 import {
   BLUE_50,
   BLUE_70,
@@ -58,16 +57,6 @@ const webStyles = {
   inputAdornment: {
     "& p": {
       color: BLACK
-    }
-  },
-  inputErrorAdornment: {
-    "& p": {
-      color: RED_70
-    }
-  }, 
-  inputSuccessAdornment: {
-    "& p": {
-      color: GREEN_70
     }
   },
   labelRoot: {
@@ -147,8 +136,6 @@ const styles = theme => {
     inputFormControl: {},
     inputFocused: {},
     inputAdornment: { ...projectTheme.inputAdornment },
-    inputErrorAdornment: { ...projectTheme.inputErrorAdornment },
-    inputSuccessAdornment: { ...projectTheme.inputSuccessAdornment },
     labelRoot: {
       color: BLACK,
       fontSize: "14px",
@@ -226,8 +213,6 @@ function TextField({
         endAdornment: endAdornment ? (
           <InputAdornment position="end" className={classes.inputAdornment}>{endAdornment}</InputAdornment>
         ) : null,
-        successAdornment: success ? (<InputAdornment position="end" className={classes.inputSuccessAdornment}><CheckCircleIcon /></InputAdornment>) : null,
-        errorAdornment: error ? (<InputAdornment position="end" className={classes.inputErrorAdornment}></InputAdornment>) : null,
         readOnly: readOnly
       }}
       classes={{
