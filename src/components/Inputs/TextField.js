@@ -95,7 +95,8 @@ const addinStyles = {
     "&$inputFocused": {
       border: `1px solid ${BLUE_50}`
     },
-  }
+  },
+  inputSuccess: {} // Add success state here
 }
 
 const styles = theme => {
