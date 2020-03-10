@@ -20,6 +20,9 @@ import {
 // TODO for web-client as per the mockup (https://projects.invisionapp.com/share/7VVOHYTJD6P#/screens/389652810_Fields): 
 // 1. Add error & success state icons
 // 2. Add right-side link
+//
+// TODO for add-in:
+// 1. Get a mockup of a success state and add it
 
 const webStyles = {
   formControlRoot: {
@@ -253,6 +256,8 @@ TextField.propTypes = {
   error: PropTypes.bool,
   /**  End InputAdornment for this component */
   endAdornment: PropTypes.node,
+  /** If true, the field will be displayed in a success state */
+  success: PropTypes.bool,
   /** If true, the input will take up the full width of its container. */
   fullWidth: PropTypes.bool,
   /** The helper text content. */
